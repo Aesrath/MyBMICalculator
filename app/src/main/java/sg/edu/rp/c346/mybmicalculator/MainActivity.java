@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         tvBMI.setText(BMI);
         tvDate.setText(Date);
         tvDesc.setText(Description);
+        // Commit Test
 
     }
 
