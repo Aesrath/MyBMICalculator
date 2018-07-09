@@ -5,5 +5,5 @@
     <string name="btncal">Calculate</string>
     <string name="btnreset">Reset Data</string>
     <string name="tvdate">Last Calculated Date: </string>
-    <string name="tvbmi">Last Calculated BMI: </string>
+    <string name="tvbmi">Last Calculated BMI: 0.0</string>
 </resources>

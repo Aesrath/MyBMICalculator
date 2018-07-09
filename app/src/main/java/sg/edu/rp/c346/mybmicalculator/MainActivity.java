@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 tvBMI.setText(getString(R.string.tvbmi));
                 tvDate.setText(getString(R.string.tvdate));
+                tvDesc.setText(null);
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().clear().commit();
             }
         });
