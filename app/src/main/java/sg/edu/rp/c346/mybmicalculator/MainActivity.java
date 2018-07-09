@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -69,39 +70,43 @@ public class MainActivity extends AppCompatActivity {
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float height = Float.parseFloat(etHeight.getText().toString());
-                float weight = Float.parseFloat(etWeight.getText().toString());
-                Calendar now = Calendar.getInstance();  //Create a Calendar object with current date and time
-
-
-                String datetime = now.get(Calendar.DAY_OF_MONTH) + "/" +
-                        (now.get(Calendar.MONTH)+1) + "/" +
-                        now.get(Calendar.YEAR) + " " +
-                        now.get(Calendar.HOUR_OF_DAY) + ":" +
-                        now.get(Calendar.MINUTE);
-
-                float BMI = weight/(height*height);
-
-                String result;
-                if(BMI < 18.5){
-                    result = "You are underweight";
+                if(etHeight.getText().toString().isEmpty() || etWeight.getText().toString().isEmpty()){
+                    Toast.makeText(getBaseContext(),"Field Cannot be empty",Toast.LENGTH_LONG).show();
                 }
-                else if (BMI < 24.9){
-                    result = "Your BMI is normal";
-                }
-                else if (BMI < 29.9){
-                    result = "You are overweight";
-                }
-                else{
-                    result = "You are obese";
-                }
+                else {
 
 
-                etHeight.setText(null);
-                etWeight.setText(null);
-                tvBMI.setText(getString(R.string.tvbmi) + " " + Float.toString(BMI));
-                tvDate.setText(getString(R.string.tvdate)+ " " + datetime);
-                tvDesc.setText(result);
+                    float height = Float.parseFloat(etHeight.getText().toString());
+                    float weight = Float.parseFloat(etWeight.getText().toString());
+                    Calendar now = Calendar.getInstance();  //Create a Calendar object with current date and time
+
+
+                    String datetime = now.get(Calendar.DAY_OF_MONTH) + "/" +
+                            (now.get(Calendar.MONTH) + 1) + "/" +
+                            now.get(Calendar.YEAR) + " " +
+                            now.get(Calendar.HOUR_OF_DAY) + ":" +
+                            now.get(Calendar.MINUTE);
+
+                    float BMI = weight / (height * height);
+
+                    String result;
+                    if (BMI < 18.5) {
+                        result = "You are underweight";
+                    } else if (BMI < 24.9) {
+                        result = "Your BMI is normal";
+                    } else if (BMI < 29.9) {
+                        result = "You are overweight";
+                    } else {
+                        result = "You are obese";
+                    }
+
+
+                    etHeight.setText(null);
+                    etWeight.setText(null);
+                    tvBMI.setText(getString(R.string.tvbmi) + " " + Float.toString(BMI));
+                    tvDate.setText(getString(R.string.tvdate) + " " + datetime);
+                    tvDesc.setText(result);
+                }
             }
         });
 
